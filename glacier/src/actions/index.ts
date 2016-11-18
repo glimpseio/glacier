@@ -4,6 +4,8 @@ export * from "./add-data-source";
 export * from "./remove-data-source";
 export * from "./update-data-cache";
 export * from "./configure-mark";
+export * from "./add-fields";
+export * from "./remove-fields";
 
 import {AddDataSourceAction} from "./add-data-source";
 import {RemoveDataSourceAction} from "./remove-data-source";
@@ -16,4 +18,6 @@ export type AllActions = AddDataSourceAction<string, {}, {}>
     | UpdateDescriptionAction
     | UpdateEncodingAction
     | UpdateMarkTypeAction
-    | UpdateSizeAction;
+    | UpdateSizeAction
+ 	| AddFieldsAction
+    | RemoveFieldsAction;
