@@ -7,15 +7,13 @@ export function fields(state: FieldState | undefined, action: AllActions) {
          throw action.error;
      }
 
-     //Just stubbing this out for now to unblock Wes
      switch(action.type) {
          case "ADD_FIELDS": {
-            return {};
+             return { ...state, uuids: [...action.payload.uuids] };
          }
          case "REMOVE_FIELDS": {
              return {};
          }
-  
+         default: return {};
      }
-
 }
