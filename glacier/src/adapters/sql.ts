@@ -1,6 +1,6 @@
 import knex = require("knex");
 import redux = require("redux");
-import {ModelState} from "../";
+import {ModelState, Field} from "../";
 import {DataAdapter} from "./";
 import {createAddDataSourceAction, createUpdateDataCacheAction, createRemoveDataSourceAction} from "../actions";
 
@@ -37,11 +37,14 @@ export class SqlDataSourceAdapter implements DataAdapter {
     }
 
     private describeColumns(tablename: string) {
-        return this._conn.schema.hasTable(tablename).then(exists => {
-            if (!exists) return
-        })
-        .then( () => {
-            return this._conn(tablename).columnInfo()
+        var fields: Field[] = []
+
+        return this._conn(tablename).columnInfo().then(function(info){
+            Object.keys(info).map(function(key){
+                fields.push({uuid: key, table: tablename})
+            });
+        }).then( () => {
+            return Promise.all(fields)
         });
     }
     

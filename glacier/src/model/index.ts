@@ -50,7 +50,6 @@ export interface FieldState {
 }
 
 export interface Field {
-    readonly name: string;
     readonly uuid: string;
     readonly table: string;
 }
