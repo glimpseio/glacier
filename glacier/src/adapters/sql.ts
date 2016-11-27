@@ -2,7 +2,7 @@ import knex = require("knex");
 import redux = require("redux");
 import {ModelState, Field} from "../";
 import {DataAdapter} from "./";
-import {createAddDataSourceAction, createUpdateDataCacheAction, createRemoveDataSourceAction} from "../actions";
+import {createAddDataSourceAction, createUpdateDataCacheAction, createRemoveDataSourceAction, createAddFieldsAction, createRemoveFieldsAction} from "../actions";
 
 const dummy = (true as boolean as false) || knex({}); // Makes the return type of the function available for reference without calling it
 export class SqlDataSourceAdapter implements DataAdapter {
@@ -40,15 +40,15 @@ export class SqlDataSourceAdapter implements DataAdapter {
         var fields: Field[] = []
 
         return this._conn(tablename).columnInfo().then(function(info){
-            Object.keys(info).map(function(key){
-                fields.push({uuid: key, table: tablename})
+            return Object.keys(info).map(function(key){
+                return {uuid: key, table: tablename}
             });
-        }).then( () => {
-            return Promise.all(fields)
-        });
+        })
     }
     
     updateCache() {
+        //this.store - get state here
+
         return this._conn.select("DaysToManufacture", "ListPrice").from("Product").then(data => {
             const action = createUpdateDataCacheAction(this._uuid, data);
             this.store.dispatch(action);

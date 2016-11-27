@@ -1,7 +1,8 @@
 import {ReduxStandardAction} from "./";
+import {Field} from "../model";
 
-export type AddFieldsAction = ReduxStandardAction<"ADD_FIELDS", {uuids: string[]}>;
+export type AddFieldsAction = ReduxStandardAction<"ADD_FIELDS", {[name: string]: Field}>;
 
-export function createAddFieldsAction(...uuids: string[]): AddFieldsAction {
-    return {type: "ADD_FIELDS", payload: {uuids}}
+export function createAddFieldsAction(fields: {[name: string]: Field}): AddFieldsAction {
+    return {type: "ADD_FIELDS", payload: fields}
 }
