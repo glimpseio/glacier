@@ -167,4 +167,13 @@ describe("glacier as a model", () => {
         await baseline("1-structuredData", await exporter.export()); // NOT A BUG - uses the same baseline as the first baseline
         await adapter.remove();
     });
+
+    it("should be able to select fields", async() => {
+        let model = glacier.createModel();
+        const adapter = glacier.createSqlFileDataSource(model, "../data/CycleChain.sqlite");
+        const field: glacier.FieldState = [{name: "DaysToManufacture", table: "Products"}];
+        dispatchSequence(model,
+            glacier.createAddFieldsAction(field)
+        );
+    });
 });

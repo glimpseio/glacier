@@ -1,6 +1,6 @@
 import knex = require("knex");
 import redux = require("redux");
-import {ModelState, Field} from "../";
+import {ModelState} from "../";
 import {DataAdapter} from "./";
 import {createAddDataSourceAction, createUpdateDataCacheAction, createRemoveDataSourceAction, createAddFieldsAction, createRemoveFieldsAction} from "../actions";
 
@@ -9,7 +9,7 @@ export class SqlDataSourceAdapter implements DataAdapter {
     private _conn: typeof dummy;
     private _uuid: number;
     constructor(private store: redux.Store<ModelState>, filename: string) {
-        
+
         this._conn = knex({
             client: "sqlite3",
             connection: { filename },
@@ -27,28 +27,26 @@ export class SqlDataSourceAdapter implements DataAdapter {
 
     private describeTables() {
          return this._conn
-            .select('name')
-            .from('sqlite_master')
-            .where('type', 'table')
-            .returning('name')
+            .select("name")
+            .from("sqlite_master")
+            .where("type", "table")
+            .returning("name")
             .then((results: [{name: string}]) => {
-                return Promise.all(results.map(results => results.name))
+                return Promise.all(results.map(table => table.name));
             });
     }
 
     private describeColumns(tablename: string) {
-        var fields: Field[] = []
 
         return this._conn(tablename).columnInfo().then(function(info){
-            return Object.keys(info).map(function(key){
-                return {uuid: key, table: tablename}
+            return Object.keys(info).map(function(key) {
+                return {uuid: key, table: tablename};
             });
-        })
+        });
     }
-    
-    updateCache() {
-        //this.store - get state here
 
+    updateCache() {
+        // this.store - get state here
         return this._conn.select("DaysToManufacture", "ListPrice").from("Product").then(data => {
             const action = createUpdateDataCacheAction(this._uuid, data);
             this.store.dispatch(action);

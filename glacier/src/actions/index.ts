@@ -11,6 +11,8 @@ import {AddDataSourceAction} from "./add-data-source";
 import {RemoveDataSourceAction} from "./remove-data-source";
 import {UpdateDataCacheAction} from "./update-data-cache";
 import {UpdateDescriptionAction, UpdateEncodingAction, UpdateMarkTypeAction, UpdateSizeAction} from "./configure-mark";
+import {AddFieldsAction} from "./add-fields";
+import {RemoveFieldsAction} from "./remove-fields";
 
 export type AllActions = AddDataSourceAction<string, {}, {}>
     | RemoveDataSourceAction
