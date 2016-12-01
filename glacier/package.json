@@ -34,6 +34,7 @@
     "@types/merge2": "^0.3.29",
     "@types/webpack": "^1.12.34",
     "@types/webpack-stream": "^3.2.4",
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-help": "^1.6.1",
     "gulp-mocha": "^3.0.1",
@@ -45,9 +46,13 @@
     "tslint": "^3.15.1",
     "typescript": "2.2.0-dev.20161117",
     "webpack": "^1.13.3",
-    "webpack-stream": "^3.2.0"
+    "webpack-stream": "^3.2.0",
+    "xmldom": "^0.1.27",
+    "xpath": "0.0.23"
   },
   "dependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/xmldom": "^0.1.28",
     "knex": "^0.12.6",
     "redux": "^3.6.0",
     "sqlite3": "^3.1.6",
