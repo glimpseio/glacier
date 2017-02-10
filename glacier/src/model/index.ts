@@ -1,6 +1,7 @@
 export interface ModelState {
     readonly sources: SourcesModelState;
     readonly marks: MarkState;
+    readonly fields: FieldState;
 }
 
 export interface SourcesModelState {
@@ -43,3 +44,10 @@ export interface MemoryDataSource extends DataSource<"memory", {}, any> {}
 export interface SqliteFileDataSource extends DataSource<"sqlite-file", {path: string}, any> {}
 
 export type AnyDataSource = MemoryDataSource | SqliteFileDataSource | DataSource<string, {}, {}>;
+
+export type FieldState = Field[];
+
+export interface Field {
+    readonly name: string;
+    readonly table: string;
+}
