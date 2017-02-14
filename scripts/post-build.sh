@@ -41,9 +41,7 @@ git fetch upstream
 git checkout $TRAVIS_PULL_REQUEST_BRANCH
 
 cp -R ./data/baselines/ ./docs
-cd ./glacier
 npm install handlebars
-cd ../
 node ./docs/template.js
 git add ./docs/baselines
 git add ./docs/index.html
