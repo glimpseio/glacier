@@ -47,7 +47,7 @@ npm install handlebars
 node ./docs/template.js
 git add ./docs/baselines
 stats=$(git status -s)
-if [[ ! "$!stats" =~ ]]
+if [[ ! "$!stats" =~ ^$ ]]
 then
   git add ./docs/index.html
 fi
