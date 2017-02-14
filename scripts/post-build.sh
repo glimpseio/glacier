@@ -22,13 +22,7 @@ then
   exit 0
 fi
 
-msg=$(git log -1 --pretty=%B)
-echo $msg
-if [[ "$msg" =~ ^rebuild.pages.* ]]
-then
-  echo "Not building pages in response to a pages build commit."
-  exit 0
-fi
+
 
 rev=$(git rev-parse --short HEAD)
 
@@ -40,6 +34,13 @@ git remote add upstream "https://$GH_TOKEN@github.com/glimpseio/glacier"
 git fetch upstream
 
 git checkout $TRAVIS_PULL_REQUEST_BRANCH
+
+msg=$(git log -1 --pretty=%B)
+if [[ "$msg" =~ ^rebuild.pages.* ]]
+then
+  echo "Not building pages in response to a pages build commit."
+  exit 0
+fi
 
 cp -R ./data/baselines/ ./docs
 npm install handlebars
