@@ -45,7 +45,11 @@ cp -R ./data/baselines/ ./docs
 npm install handlebars
 node ./docs/template.js
 git add ./docs/baselines
-git add ./docs/index.html
+stats=$(git status -s)
+if [[ ! "$!stats" =~ ]]
+then
+  git add ./docs/index.html
+fi
 
 git commit -m "rebuild pages at ${rev}"
 git push -u upstream $TRAVIS_PULL_REQUEST_BRANCH
