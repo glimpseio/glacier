@@ -45,6 +45,7 @@ fi
 cp -R ./data/baselines/ ./docs
 
 stats=$(git status -s)
+echo $stats
 if [[ ! "$stats" =~ ^$ ]]
 then
   npm install handlebars
