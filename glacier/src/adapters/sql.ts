@@ -22,7 +22,7 @@ export class SqlDataSourceAdapter implements DataAdapter {
         this.updateCache();
     };
     assertConnection() {
-        if (!this._conn) throw new Error("There is no connection - has the connection been closed?")
+        if (!this._conn) throw new Error("There is no connection - has the connection been closed?");
     }
     describeTables() {
         this.assertConnection();
