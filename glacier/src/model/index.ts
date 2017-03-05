@@ -84,7 +84,7 @@ export interface ScaleDef {
     zero?: boolean;
     useRawDomain?: boolean;
 
-    //ordinal only
+    // ordinal only
     bandSize?: number | "fit";
     padding?: number;
 }
