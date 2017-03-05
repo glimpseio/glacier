@@ -23,7 +23,6 @@ function remapFieldsToNames(channels: ChannelState, fields: FieldState): Channel
             if (ch.field) {
                 const f = ch.field;
                 if (typeof f === "number") {
-                    const field = f as FieldId;
                     replacement = { ...ch, field: lookupName(f, fields) } as ChannelDef;
                 }
             }
@@ -43,7 +42,6 @@ function remapFieldsToJoinNames(channels: ChannelState, fields: FieldState): Cha
             if (ch.field) {
                 const f = ch.field;
                 if (typeof f === "number") {
-                    const field = f as FieldId;
                     replacement = { ...ch, field: `${lookupName(f, fields)}_${f}` } as ChannelDef;
                     // Patch axis titles, too
                     if (replacement.axis && !replacement.axis.title) {
