@@ -63,55 +63,53 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="glacier">glacier</h1>
-				<p><a href="https://travis-ci.org/glimpseio/glacier"><img src="https://travis-ci.org/glimpseio/glacier.png" alt="Build Status"></a></p>
-				<h1 id="dev-setup">Dev Setup</h1>
-				<ol>
-					<li>Install node canvas dependencies as appropriate for <a href="https://github.com/Automattic/node-canvas/wiki">your platform</a>. We use it to generate vizualizations in test.</li>
-					<li><code>cd</code> into this folder</li>
-					<li><code>npm install</code> to get our dependcies - both build time and run time</li>
-					<li>(optional) <code>npm install -g gulp-cli</code> to install <code>gulp</code> on your path. If you don&#39;t, you will not be able to use any <code>gulp</code> commands. Use <code>gulp help</code> for a list of the available commands for this project.</li>
-				</ol>
-				<p>If using <code>vscode</code> you should install the <code>tslint</code> extension to get nice lint warnings as you edit.</p>
-				<h1 id="build">Build</h1>
-				<ol>
-					<li><code>gulp build</code></li>
-				</ol>
-				<h1 id="test">Test</h1>
-				<ol>
-					<li><code>gulp test</code> or <code>npm test</code> This implicitly runs <code>build</code>.</li>
-				</ol>
-				<h1 id="release">Release</h1>
-				<ol>
-					<li><code>gulp build-release</code> Builds a minified copy of the repository</li>
-				</ol>
-				<h1 id="debugging">Debugging</h1>
-				<p>The project is easiest to debug while running tests within <code>vscode</code>. Just add a <code>vscode</code> <code>launch.json</code> (inside the <code>.vscode</code> folder) similar to <a href="https://gist.github.com/weswigham/8b6ddfcb99daa85e095fe1fe82ecd8de">this one</a>, and choose <code>&#39;Launch&#39;</code> on the debugging pane. </p>
-				<h1 id="example">Example</h1>
-				<p>In the general case, this library should be usable like the following:</p>
-				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> {createModel, createSvgExporter, createSqlDataSource} <span class="hljs-keyword">from</span> <span class="hljs-string">"glacier"</span>;
-<span class="hljs-keyword">const</span> model = createModel();
-<span class="hljs-keyword">const</span> exporter = createSvgExporter(model);
-<span class="hljs-keyword">const</span> source = createSqlDataSource(model, <span class="hljs-string">"../path/to/db"</span>);
-model.subscribe(<span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(exporter.export()));
-</code></pre>
-				<h1 id="design">Design</h1>
-				<p>The library is designed as a store which you can dispatch actions to, and hook up adapters (which can dispatch actions) and exporters (which can listen on state changes) on.</p>
-				<ul>
-					<li><code>src/actions</code> - actions creators - this is where functions which produce actions which can be dispatched to the store reside</li>
-					<li><code>src/reducers</code> - state management - this is where actions become new parts of the state; specific reducers are responsible for specific actions which update specific portions of the state</li>
-					<li><code>src/model</code> - contains interfaces that describe the shape of state</li>
-					<li><code>src/mapper</code> - logic which maps our internal state into a Vega-Lite specification object</li>
-					<li><code>src/adapters</code> - contains objects and interfaces specifying how to import data into the state (CSV, JSON, SQL, etc)</li>
-					<li><code>src/exporters</code> - contains objects and interfaces specify how to export a state into something useful (SVG, ZIP, etc)</li>
-				</ul>
-			</div>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>External modules</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-external-module"><a href="modules/_actions_add_data_source_.html" class="tsd-kind-icon">"actions/add-<wbr>data-<wbr>source"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_add_fields_.html" class="tsd-kind-icon">"actions/add-<wbr>fields"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_add_join_.html" class="tsd-kind-icon">"actions/add-<wbr>join"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_channels_.html" class="tsd-kind-icon">"actions/channels"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_configure_mark_.html" class="tsd-kind-icon">"actions/configure-<wbr>mark"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_index_.html" class="tsd-kind-icon">"actions/index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_remove_data_source_.html" class="tsd-kind-icon">"actions/remove-<wbr>data-<wbr>source"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_remove_fields_.html" class="tsd-kind-icon">"actions/remove-<wbr>fields"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_remove_join_.html" class="tsd-kind-icon">"actions/remove-<wbr>join"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_set_filter_.html" class="tsd-kind-icon">"actions/set-<wbr>filter"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_actions_update_data_cache_.html" class="tsd-kind-icon">"actions/update-<wbr>data-<wbr>cache"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_adapters_index_.html" class="tsd-kind-icon">"adapters/index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_adapters_jsonblob_.html" class="tsd-kind-icon">"adapters/jsonblob"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_adapters_memory_.html" class="tsd-kind-icon">"adapters/memory"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_adapters_rawcsv_.html" class="tsd-kind-icon">"adapters/rawcsv"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_adapters_single_memory_load_base_.html" class="tsd-kind-icon">"adapters/single-<wbr>memory-<wbr>load-<wbr>base"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_adapters_sql_.html" class="tsd-kind-icon">"adapters/sql"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_exporters_index_.html" class="tsd-kind-icon">"exporters/index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_exporters_svg_.html" class="tsd-kind-icon">"exporters/svg"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_exporters_zip_.html" class="tsd-kind-icon">"exporters/zip"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_index_.html" class="tsd-kind-icon">"index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_mapper_index_.html" class="tsd-kind-icon">"mapper/index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_model_index_.html" class="tsd-kind-icon">"model/index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_reducers_channels_.html" class="tsd-kind-icon">"reducers/channels"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_reducers_fields_.html" class="tsd-kind-icon">"reducers/fields"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_reducers_index_.html" class="tsd-kind-icon">"reducers/index"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_reducers_marks_.html" class="tsd-kind-icon">"reducers/marks"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_reducers_sources_.html" class="tsd-kind-icon">"reducers/sources"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_reducers_transforms_.html" class="tsd-kind-icon">"reducers/transforms"</a></li>
+								<li class="tsd-kind-external-module"><a href="modules/_util_index_.html" class="tsd-kind-icon">"util/index"</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
+					<li class="globals current ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">

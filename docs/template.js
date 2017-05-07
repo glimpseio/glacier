@@ -1,5 +1,5 @@
 const handlebars = require("handlebars");
-const fileContents = require("fs").readFileSync("docs/index.html.handelbars", "utf8");
+const fileContents = require("fs").readFileSync("docs/test_results.html.handelbars", "utf8");
 const result = handlebars.compile(fileContents);
 const date = new Date();
 const localFiles = require("fs").readdirSync("docs/baselines/local").filter(f => f.endsWith(".svg")).sort((f1, f2) => {
@@ -21,4 +21,4 @@ const data = {
 
 const output = result(data);
 
-require("fs").writeFileSync("docs/index.html", output);
+require("fs").writeFileSync("docs/test_results.html", output);

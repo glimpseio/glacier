@@ -4,6 +4,7 @@ import ws = require("webpack-stream");
 import webpack = require("webpack");
 import mocha = require("gulp-mocha");
 import gulpts = require("gulp-typescript");
+import typedoc = require("gulp-typedoc");
 import mergeStreams = require("merge2");
 import child_process = require("child_process");
 import path = require("path");
@@ -18,6 +19,20 @@ if (process.env.path !== undefined) {
 } else if (process.env.PATH !== undefined) {
     process.env.PATH = nodeModulesPathPrefix + process.env.PATH;
 }
+
+gulp.task("typedoc", "Generate documentation from code comments", function() {
+    return gulp
+        .src(["src/**/*.ts", "!src/test/**/*.ts", "!src/node_modules/**"])
+        .pipe(typedoc({
+            ...require("./src/tsconfig.json").compilerOptions,
+            lib: ["lib.es6.d.ts"], // typedoc does something funky with this, so we need to give it a slightly different value
+            out: "docs/",
+            name: "Glacier",
+            mode: "modules",
+            disableOutputCheck: true
+        }))
+    ;
+});
 
 gulp.task("lint", "Runs tslint over the typescript within the project", (done) => {
     const proc = child_process.spawn("tslint", [
