@@ -41,7 +41,7 @@ Common Build Problems
 
 
 * During the development most of the problems with the build happen with the native dependencies.  Specifically node canvas and AlaSQL.  So make sure that all of the native dependencies are working.
-* Sometimes deleting the node_modules folder and `npm installing` those dependencies sometimes fixes the build.
+* Sometimes deleting the node_modules folder and `npm install`ing those dependencies sometimes fixes the build.
 
 
 Debugging
