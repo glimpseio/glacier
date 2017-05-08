@@ -1,8 +1,7 @@
 export interface Exporter<T> {
-    (): void; // OnUpdate method
+    (): void;
     export(): Promise<T>;
     dispose(): void;
 }
-
 export * from "./svg";
 export * from "./zip";
