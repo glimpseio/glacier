@@ -1,4 +1,5 @@
 {
+    "mark": "line",
     "data": {
         "values": [
             {
@@ -2029,7 +2030,6 @@
             "type": "quantitative"
         }
     },
-    "mark": "line",
     "description": "Test Plot",
     "width": 264,
     "height": 255
