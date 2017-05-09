@@ -29,11 +29,14 @@ Build
 Test
 =====
 1. `gulp test` or `npm test` This implicitly runs `build`.
+Baseline test results are visible online [here](https://glimpseio.github.io/glacier/test_results.html).
 
 Release
 =======
-1. `gulp build-release` Builds a minified copy of the repository
+1. `gulp build-release` Builds a minified copy of the repository into the dist folder.
 
+Documentation
+1. `gulp typedoc` will regenerate the documentation
 
 
 Common Build Problems
