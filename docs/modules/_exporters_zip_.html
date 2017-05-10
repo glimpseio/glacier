@@ -93,7 +93,7 @@
 					<div class="tsd-signature tsd-kind-icon">Zip<wbr>Exporter<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_exporters_index_.exporter.html" class="tsd-signature-type">Exporter</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/exporters/zip.ts#L6">exporters/zip.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/exporters/zip.ts#L6">exporters/zip.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -111,16 +111,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/exporters/zip.ts#L8">exporters/zip.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/exporters/zip.ts#L14">exporters/zip.ts:14</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Instantiates a zip-file exporter for the given store</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>store: <span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_model_index_.modelstate.html" class="tsd-signature-type">ModelState</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The store to listen on and retrieve state from</p>
+									</div>
 								</li>
 								<li>
 									<h5>library: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The map of utility files to include in the resulting zip, in addition to the <code>state.json</code> and <code>thumbnail.svg</code></p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-index-signature">
 											<h5><span class="tsd-signature-symbol">[</span>index: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">Buffer</span></h5>
@@ -129,6 +140,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> onChange: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The optional callback to execute whenever a state update is fired</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_exporters_zip_.html#zipexporter" class="tsd-signature-type">ZipExporter</a></h4>
@@ -136,9 +150,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/exporters/zip.ts#L13">exporters/zip.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/exporters/zip.ts#L26">exporters/zip.ts:26</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Instantiates a zip-file exporter for the given store</p>
+								</div>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -149,9 +168,15 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>store: <span class="tsd-signature-type">Store</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The store to listen on and retrieve state from</p>
+									</div>
 								</li>
 								<li>
 									<h5>library: <span class="tsd-signature-type">object</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The map of utility files to include in the resulting zip, in addition to the <code>state.json</code> and <code>thumbnail.svg</code></p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-index-signature">
 											<h5><span class="tsd-signature-symbol">[</span>index: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">Buffer</span></h5>
@@ -160,6 +185,9 @@
 								</li>
 								<li>
 									<h5>select: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A function which, given a state of type T, selects the ModelState fragement of that state</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -181,6 +209,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> onChange: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The optional callback to execute whenever a state update is fired</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_exporters_zip_.html#zipexporter" class="tsd-signature-type">ZipExporter</a></h4>
