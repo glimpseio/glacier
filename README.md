@@ -35,7 +35,8 @@ Release
 =======
 1. `gulp build-release` Builds a minified copy of the repository into the dist folder.
 
-Documentation
+[Documentation](https://glimpseio.github.io/glacier/)
+=============
 1. `gulp typedoc` will regenerate the documentation
 
 
