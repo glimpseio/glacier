@@ -23,6 +23,9 @@ import {AddChannelAction, RemoveChannelAction, UpdateChannelAction} from "./chan
 import {SetFilterAction} from "./set-filter";
 import {Channel} from "../model";
 
+/**
+ * Union of all the internally-defined actions
+ */
 export type AllActions = AddDataSourceAction<string, {}, {}>
     | RemoveDataSourceAction
     | UpdateDataCacheAction<{}>

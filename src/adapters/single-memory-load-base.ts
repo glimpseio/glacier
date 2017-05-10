@@ -4,6 +4,9 @@ import { DataAdapter } from "./";
 import { createUpdateDataCacheAction, createRemoveDataSourceAction, createAddFieldsAction } from "../actions";
 import { poisonPill } from "../util";
 
+/**
+ * A generic base for declaring adapters for data stored in-memory in-process
+ */
 export class SinglyLoadedMemoryDataSource implements DataAdapter {
     constructor(protected storedData: any[], protected store: redux.Store<{}>) {}
     async defaultFieldSelection(selectNumber = 2) {

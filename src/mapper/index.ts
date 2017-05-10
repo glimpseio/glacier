@@ -12,11 +12,17 @@ import {
     ConstantSelector
 } from "../";
 
+/**
+ * Given a field id, looks up its name within the field state
+ */
 function lookupName(f: FieldId, fields: FieldState): string {
     if (!fields[f]) throw new Error(`Field with ID ${f} does not exist!`);
     return fields[f].name;
 }
 
+/**
+ * Given a channel state containing numbers for field ids, maps those ids back into names
+ */
 function remapFieldsToNames(channels: ChannelState, fields: FieldState): ChannelState {
     const newState: Encoding = {};
     for (const k of Object.keys(channels)) {
@@ -36,6 +42,11 @@ function remapFieldsToNames(channels: ChannelState, fields: FieldState): Channel
     return newState;
 }
 
+/**
+ * Given a channel state containing numbers referencing field ids
+ * remaps those ids into the unique names generated internally to
+ * ensure there are no collisions during joining
+ */
 function remapFieldsToJoinNames(channels: ChannelState, fields: FieldState): ChannelState {
     const newState: Encoding = {};
     for (const k of Object.keys(channels)) {
@@ -74,6 +85,9 @@ const defaults = {
     mark: "bar"
 };
 
+/**
+ * Maps an internal state into a vega-lite specification
+ */
 export function compileState({sources, marks, fields: fieldTable, transforms, channels}: ModelState) {
     const fields = Object.keys(fieldTable).map(f => fieldTable[+f]);
     // Simple case: all selected fields from same data source

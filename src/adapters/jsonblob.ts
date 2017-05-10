@@ -5,6 +5,9 @@ import { SinglyLoadedMemoryDataSource } from "./single-memory-load-base";
 
 export interface JSONDataSourceAdapter extends DataAdapter {}
 
+/**
+ * Given a JSON string, loads it into a memory data source and adds it to the store
+ */
 export function createJSONDataSource(store: redux.Store<{}>, content: string): JSONDataSourceAdapter {
     const storedData = JSON.parse(content);
     const adapter: JSONDataSourceAdapter = new SinglyLoadedMemoryDataSource(storedData, store);
