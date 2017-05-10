@@ -6,12 +6,26 @@ import { createAddDataSourceAction, createUpdateDataCacheAction, createRemoveDat
 
 
 const dummy = (true as boolean as false) || knex({}); // Makes the return type of the function available for reference without calling it
+/**
+ * Data source defining how to connect to an manipulate data from a sqlite file
+ */
 export class SqlDataSourceAdapter<T> implements DataAdapter {
     private _conn: typeof dummy;
     id: DataSourceId;
 
-    constructor(store: redux.Store<ModelState>, filename: string)
-    constructor(store: redux.Store<T>, filename: string, _selector: (s: T) => ModelState)
+    /**
+     * Instantiates a connection obejct, and adds a new data source to the store
+     * @param store The store to dispatch events to
+     * @param filename The database file to read
+     */
+    constructor(store: redux.Store<ModelState>, filename: string);
+    /**
+     * Instantiates a connection obejct, and adds a new data source to the store
+     * @param store The store to dispatch events to
+     * @param filename The database file to read
+     * @param _selector A selector function defining how to find the ModelState fragment of state T
+     */
+    constructor(store: redux.Store<T>, filename: string, _selector: (s: T) => ModelState);
     constructor(private store: redux.Store<T>, filename: string, private _selector: (s: T) => ModelState = ((s: any) => s)) {
         const action = createAddDataSourceAction("sqlite-file", { path: filename }, {}, this);
         this.id = action.payload.id;
@@ -24,6 +38,11 @@ export class SqlDataSourceAdapter<T> implements DataAdapter {
         store.dispatch(action);
         this.updateCache();
     };
+
+    /**
+     * Asynchronously fetches some number of fields and sets them as active inside the model
+     * Resolves when the action adding all the default fields has been dispatched
+     */
     async defaultFieldSelection(selectNumber = 2) {
         this.assertConnection();
         const tables: string[] = await this.describeTables();
@@ -40,9 +59,17 @@ export class SqlDataSourceAdapter<T> implements DataAdapter {
         const addAction = createAddFieldsAction(fields);
         this.store.dispatch(addAction);
     }
+
+    /**
+     * Asserts that the connection is present
+     */
     assertConnection() {
         if (!this._conn) throw new Error("There is no connection - has the connection been closed?");
     }
+
+    /**
+     * Returns a promise to a list of the tables in the sql db
+     */
     describeTables() {
         this.assertConnection();
         return this._conn
@@ -56,6 +83,10 @@ export class SqlDataSourceAdapter<T> implements DataAdapter {
                 });
             });
     }
+
+    /**
+     * Returns a promise to a list of the columns in a given table in a sql db
+     */
     describeColumns(table: string) {
         this.assertConnection();
         return this._conn
@@ -70,6 +101,11 @@ export class SqlDataSourceAdapter<T> implements DataAdapter {
                 return columns;
             });
     }
+
+    /**
+     * Given the fields selected in the store, updates the cached data in the store fore those fields
+     * Resolves when the action updating the data in the store has been dispatched
+     */
     updateCache() {
         this.assertConnection();
         let state = this._selector(this.store.getState());
@@ -93,6 +129,10 @@ export class SqlDataSourceAdapter<T> implements DataAdapter {
             });
         }));
     }
+
+    /**
+     * Removes the data source associated with this adapter from the store and destroys the connection
+     */
     remove() {
         const action = createRemoveDataSourceAction(this.id);
         this.store.dispatch(action);
@@ -102,6 +142,9 @@ export class SqlDataSourceAdapter<T> implements DataAdapter {
     }
 }
 
+/**
+ * Creates an instance of a sql data source - just a wrapper around the class constructor
+ */
 export function createSqlFileDataSource(store: redux.Store<ModelState>, filename: string) {
     return new SqlDataSourceAdapter(store, filename);
 }

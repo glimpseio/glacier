@@ -5,15 +5,24 @@ import { createAddDataSourceAction } from "../actions";
 import { SinglyLoadedMemoryDataSource } from "./single-memory-load-base";
 
 export interface MemoryDataSourceAdapter extends DataAdapter {
+    /**
+     * @param data Data to replace the cached data associated with this data source with
+     */
     (data: any): void;
 }
 
+/**
+ * Unlike SinglyLoadedMemoryDataSource, this class allows the internal data to be updated
+ */
 class InternalMemoryDataSource extends SinglyLoadedMemoryDataSource {
     setData(data: any[]) {
         this.storedData = data;
     }
 }
 
+/**
+ * Creates an in-memory data source which can be updated with new data over time, and adds it to the store
+ */
 export function createMemoryDataSource(store: redux.Store<{}>): MemoryDataSourceAdapter {
     const base = new InternalMemoryDataSource([], store);
     const func = (((data: any[]) => {

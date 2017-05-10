@@ -1,6 +1,11 @@
 import {SourcesModelState, DataSource, AnyDataSource} from "../model";
 import {AllActions} from "../actions";
 
+/**
+ * Given an index to remove, returns a new shallow copy of the state without that member
+ * @param state The state to filter
+ * @param toRemove The index of the member to remove
+ */
 function filterState(state: SourcesModelState, toRemove: number): SourcesModelState {
     const ret: {[index: number]: AnyDataSource} = {};
     Object.keys(state).map(k => +k).filter(k => k !== toRemove).forEach(key => {
@@ -9,6 +14,10 @@ function filterState(state: SourcesModelState, toRemove: number): SourcesModelSt
     return ret;
 }
 
+
+/**
+ * sources member reducer - handles actions and state related to data source management
+ */
 export function sources(state: SourcesModelState | undefined, action: AllActions): SourcesModelState {
     if (!state) return {};
     if (action.error) {
