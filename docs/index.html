@@ -66,11 +66,17 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="glacier">glacier</h1>
 				<p><a href="https://travis-ci.org/glimpseio/glacier"><img src="https://travis-ci.org/glimpseio/glacier.png" alt="Build Status"></a></p>
+				<h1 id="prerequisites">Prerequisites</h1>
+				<ul>
+					<li>Node.js 6.X.X/7.X.X</li>
+					<li>Git</li>
+					<li>Node Canvas Prerequisites ( <a href="https://github.com/Automattic/node-canvas">https://github.com/Automattic/node-canvas</a> )</li>
+				</ul>
 				<h1 id="dev-setup">Dev Setup</h1>
 				<ol>
-					<li>Install node canvas dependencies as appropriate for <a href="https://github.com/Automattic/node-canvas/wiki">your platform</a>. We use it to generate vizualizations in test.</li>
+					<li>Install node canvas dependencies as appropriate for <a href="https://github.com/Automattic/node-canvas/wiki">your platform</a>. We use it to generate visualizations in test.</li>
 					<li><code>cd</code> into this folder</li>
-					<li><code>npm install</code> to get our dependcies - both build time and run time</li>
+					<li><code>npm install</code> to get our dependencies - both build time and run time</li>
 					<li>(optional) <code>npm install -g gulp-cli</code> to install <code>gulp</code> on your path. If you don&#39;t, you will not be able to use any <code>gulp</code> commands. Use <code>gulp help</code> for a list of the available commands for this project.</li>
 				</ol>
 				<p>If using <code>vscode</code> you should install the <code>tslint</code> extension to get nice lint warnings as you edit.</p>
@@ -80,14 +86,24 @@
 				</ol>
 				<h1 id="test">Test</h1>
 				<ol>
-					<li><code>gulp test</code> or <code>npm test</code> This implicitly runs <code>build</code>.</li>
+					<li><code>gulp test</code> or <code>npm test</code> This implicitly runs <code>build</code>.
+					Baseline test results are visible online <a href="https://glimpseio.github.io/glacier/test_results.html">here</a>.</li>
 				</ol>
 				<h1 id="release">Release</h1>
 				<ol>
-					<li><code>gulp build-release</code> Builds a minified copy of the repository</li>
+					<li><code>gulp build-release</code> Builds a minified copy of the repository into the dist folder.</li>
 				</ol>
+				<p>Documentation</p>
+				<ol>
+					<li><code>gulp typedoc</code> will regenerate the documentation</li>
+				</ol>
+				<h1 id="common-build-problems">Common Build Problems</h1>
+				<ul>
+					<li>During the development most of the problems with the build happen with the native dependencies.  Specifically node canvas and AlaSQL.  So make sure that all of the native dependencies are working.</li>
+					<li>Sometimes deleting the node_modules folder and <code>npm install</code>ing those dependencies sometimes fixes the build.</li>
+				</ul>
 				<h1 id="debugging">Debugging</h1>
-				<p>The project is easiest to debug while running tests within <code>vscode</code>. Just add a <code>vscode</code> <code>launch.json</code> (inside the <code>.vscode</code> folder) similar to <a href="https://gist.github.com/weswigham/8b6ddfcb99daa85e095fe1fe82ecd8de">this one</a>, and choose <code>&#39;Launch&#39;</code> on the debugging pane. </p>
+				<p>The project is easiest to debug while running tests within <code>vscode</code>. Just add a <code>vscode</code> <code>launch.json</code> (inside the <code>.vscode</code> folder) similar to <a href="https://gist.github.com/weswigham/8b6ddfcb99daa85e095fe1fe82ecd8de">this one</a>, and choose <code>&#39;Launch&#39;</code> on the debugging pane.</p>
 				<h1 id="example">Example</h1>
 				<p>In the general case, this library should be usable like the following:</p>
 				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> {createModel, createSvgExporter, createSqlDataSource} <span class="hljs-keyword">from</span> <span class="hljs-string">"glacier"</span>;

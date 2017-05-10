@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Specific shape of a sqlite file data source, without specifying the shape of any data within it</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -108,9 +115,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_model_index_.datasource.html">DataSource</a>.<a href="_model_index_.datasource.html#adapter">adapter</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/model/index.ts#L25">model/index.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/model/index.ts#L80">model/index.ts:80</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A reference to the actual instantiated adapter associated with this data source</p>
+							<ul>
+								<li>useful for reaquiring adapter-specific bound actions after deserialization</li>
+							</ul>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="cache" class="tsd-anchor"></a>
@@ -119,9 +134,16 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_model_index_.datasource.html">DataSource</a>.<a href="_model_index_.datasource.html#cache">cache</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/model/index.ts#L23">model/index.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/model/index.ts#L71">model/index.ts:71</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The cache of actual row data from the data source - while the type is allowed
+								to be arbitrary, joining logic may not handle caches not structures as a list
+							of rows well.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
@@ -130,9 +152,14 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_model_index_.datasource.html">DataSource</a>.<a href="_model_index_.datasource.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/model/index.ts#L24">model/index.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/model/index.ts#L75">model/index.ts:75</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The unique identifier assigned to this specific data source.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="metadata" class="tsd-anchor"></a>
@@ -141,9 +168,16 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_model_index_.datasource.html">DataSource</a>.<a href="_model_index_.datasource.html#metadata">metadata</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/model/index.ts#L22">model/index.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/model/index.ts#L65">model/index.ts:65</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>An arbitrary cache of metadata the data source may cache inside the model;
+								useful for storing things like available fields, schemas, connection data,
+							and more - potentially very useful for deserialization.</p>
+						</div>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -160,9 +194,16 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_model_index_.datasource.html">DataSource</a>.<a href="_model_index_.datasource.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/0426e14/src/model/index.ts#L21">model/index.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/glimpseio/glacier/blob/54f9978/src/model/index.ts#L59">model/index.ts:59</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>A string literal uniquely identifying the data source&#39;s type
+								Note: Not currently important, but will be used deserialization of
+							data sources.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
