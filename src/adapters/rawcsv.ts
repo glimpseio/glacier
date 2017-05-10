@@ -6,6 +6,9 @@ import { SinglyLoadedMemoryDataSource } from "./single-memory-load-base";
 
 export interface CSVDataSourceAdapter extends DataAdapter {}
 
+/**
+ * Loads a CSV string into an in-memory data source and adds it to the store
+ */
 export function createCSVDataSource(store: redux.Store<{}>, content: string): CSVDataSourceAdapter {
     const storedData = alasql(`SELECT * FROM CSV(?, {headers:true})`, [content]);
     const adapter: CSVDataSourceAdapter = new SinglyLoadedMemoryDataSource(storedData, store);
